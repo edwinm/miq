@@ -1,0 +1,5 @@
+.DS_Store
+.idea/*
+mclass-min.js.report.txt
+node_modules
+closure-compiler

@@ -1,0 +1,26 @@
+{
+  "name": "anise",
+  "version": "1.0.0",
+  "description": "Lightweight jQuery replacement.",
+  "keywords": [
+    "jQuery",
+    "DOM"
+  ],
+  "bugs": "https://github.com/edwinm/anise/issues",
+  "license": "MIT",
+  "author": "Edwin Martin <edwin@bitstorm.org>",
+  "homepage": "http://www.bitstorm.org/javascript/anise/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edwinm/anise.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-closure-compiler": "0.0.21",
+    "grunt-contrib-watch": "~0.5.3",
+    "closure-compiler": "^0.2.6",
+    "jquery": "^2.1.4",
+    "qunit": "^0.7.6",
+    "requirejs": "^2.1.18"
+  }
+}
