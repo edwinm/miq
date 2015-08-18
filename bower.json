@@ -1,8 +1,8 @@
 {
     "name": "anise",
     "description": "Lightweight jQuery replacement.",
-    "version": "1.3.0",
-    "main": "./mclass-min.js",
+    "version": "1.0.0",
+    "main": "./anise-min.js",
     "ignore": [],
     "keywords": ["jQuery", "DOM"],
     "authors": [
