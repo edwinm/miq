@@ -1,7 +1,11 @@
-/**
- * miq.js 1.2.0
- * Copyright 2015 Edwin Martin <edwin@bitstorm.org>
- * http://www.bitstorm.org/
+/**!
+ @preserve miq 1.3.0
+
+ @copyright Copyright 2015 Edwin Martin
+
+ @see {@link http://www.bitstorm.org/javascript/miq/|miq}
+
+ @license MIT
  */
 
 function miq(arg, doc) {
@@ -45,7 +49,7 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.2.0"},
+	miq: {value: "1.3.0"},
 
 	first: {get: function() {
 		return this[0];
@@ -243,7 +247,7 @@ miq.fn = Object.create(Array.prototype, {
 miq.dataStore = [null];
 miq.dataCounter = 1;
 
-miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector'].filter(function(sel) {return sel in document.body})[0];
+miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector'].filter(function(sel) {return sel in document.documentElement})[0];
 
 
 if (typeof $ == 'undefined') {
