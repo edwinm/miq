@@ -65,14 +65,25 @@ miq(function() {
 		ok ( miq('.miq div').length == 0 );
 	});
 
-
 	test( "closest", function() {
 		var p = miq('section p:first-child');
 		ok( p.closest('div').hasClass('miq') );
 	});
 
+	test( "matches", function() {
+		miq('section p:first-child').addClass('first');
+		var first = miq('section p').matches('.first');
+		ok( first.length == 1);
+		ok( first.hasClass('first') );
+	});
+
 	test( "find", function() {
 		ok( miq('.miq').find('li').length == 3 );
+	});
+
+	test( "remove all", function() {
+		miq('.miq ul').remove();
+		ok( miq('.miq ul').length == 0 );
 	});
 });
 
