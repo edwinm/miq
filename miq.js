@@ -45,7 +45,7 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.0.1"},
+	miq: {value: "1.1.0"},
 
 	first: {get: function() {
 		return this[0];
