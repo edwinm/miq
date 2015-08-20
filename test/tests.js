@@ -16,12 +16,10 @@ miq(function() {
 		var a = ['html', 'css', 'javascript'];
 		var ul = miq('<ul>');
 		ul.append(a.map(function(el) {
-			console.log('el', el);
 			return miq('<li>').html(el);
 		}));
 		miq('.miq').append(ul);
 		ok( miq('ul li').length == 3 );
-		console.log('txt', miq('ul li').get(2).text());
 		ok( miq('ul li').get(2).text() == 'javascript' );
 	});
 
