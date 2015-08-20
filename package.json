@@ -1,18 +1,18 @@
 {
-  "name": "anise",
+  "name": "miq",
   "version": "1.0.0",
   "description": "Lightweight jQuery replacement.",
   "keywords": [
     "jQuery",
     "DOM"
   ],
-  "bugs": "https://github.com/edwinm/anise/issues",
+  "bugs": "https://github.com/edwinm/miq/issues",
   "license": "MIT",
   "author": "Edwin Martin <edwin@bitstorm.org>",
-  "homepage": "http://www.bitstorm.org/javascript/anise/",
+  "homepage": "http://www.bitstorm.org/javascript/miq/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/edwinm/anise.git"
+    "url": "https://github.com/edwinm/miq.git"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

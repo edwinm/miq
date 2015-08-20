@@ -1,4 +1,4 @@
-# anise
+# miq
 
 Lightweight jQuery replacement.
 

@@ -8,8 +8,8 @@ module.exports = function (grunt) {
 		'closure-compiler': {
 			frontend: {
 				closurePath: 'closure-compiler',
-				js: 'anise.js',
-				jsOutputFile: 'anise-min.js',
+				js: 'miq.js',
+				jsOutputFile: 'miq-min.js',
 				maxBuffer: 500,
 				options: {
 					compilation_level: 'SIMPLE_OPTIMIZATIONS',
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 			}
 		},
 		'watch': {
-			files: ['anise.js'],
+			files: ['miq.js'],
 			tasks: ['closure-compiler']
 		}
 	});
