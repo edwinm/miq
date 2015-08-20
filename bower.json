@@ -1,7 +1,7 @@
 {
     "name": "miq",
     "description": "Lightweight jQuery replacement.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "main": "./miq-min.js",
     "ignore": [],
     "keywords": ["jQuery", "DOM"],

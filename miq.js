@@ -1,5 +1,5 @@
 /**
- * miq.js
+ * miq.js 1.2.0
  * Copyright 2015 Edwin Martin <edwin@bitstorm.org>
  * http://www.bitstorm.org/
  */
@@ -45,7 +45,7 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.1.0"},
+	miq: {value: "1.2.0"},
 
 	first: {get: function() {
 		return this[0];
@@ -247,5 +247,5 @@ miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatc
 
 
 if (typeof $ == 'undefined') {
-	//$ = miq;
+	$ = miq;
 }
