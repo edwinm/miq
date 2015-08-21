@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.3.0
+ @preserve miq 1.4.0
 
  @copyright Copyright 2015 Edwin Martin
 
@@ -49,7 +49,7 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.3.0"},
+	miq: {value: "1.4.0"},
 
 	first: {get: function() {
 		return this[0];
