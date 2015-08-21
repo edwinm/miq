@@ -215,39 +215,52 @@ miq.fn = Object.create(Array.prototype, {
 		}
 	}},
 
-	ajaxCallback: {value: function(url, resolve, reject, method, data, headers) {
-	    var xmlHttp = new XMLHttpRequest()
+	ajaxCallback: {value: function(url, resolve, reject, options) {
+	    var xmlHttp = new XMLHttpRequest();
 
 		xmlHttp.onreadystatechange = function () {
+			var result;
 			if (xmlHttp.readyState == 4) {
 				if (xmlHttp.status == 200) {
-					resolve(xmlHttp);
+					switch(options.type) {
+						case 'xml':
+							result = xmlHttp.responseXML;
+							break;
+						case 'json':
+							result = JSON.parse(xmlHttp.responseText);
+							break;
+						default:
+							result = xmlHttp.responseText;
+							break;
+					}
+					resolve(result);
 				} else if (reject) {
 					reject("Ajax error: " + xmlHttp.status);
 				}
 			}
 		};
-		xmlHttp.open(method || 'GET', url, true);
-		if (headers) {
-			for (var key in headers) {
-				xmlHttp.setRequestHeader(key, headers[key]);
+		xmlHttp.open(options.method || 'GET', url, true);
+		if (options.headers) {
+			for (var key in options.headers) {
+				xmlHttp.setRequestHeader(key, options.headers[key]);
 			}
 		}
-		xmlHttp.send(data || '');
+		xmlHttp.send(options.data || '');
 	}},
 
-	ajax: {value: function(url, method, data, headers) {
+	ajax: {value: function(url, options) {
 		return new Promise(function(resolve, reject) {
-			miq.ajax(url, resolve, reject, method, data, headers);
+			miq().ajaxCallback(url, resolve, reject, options);
 		});
 	}}
-
 });
 
 miq.dataStore = [null];
 miq.dataCounter = 1;
 
-miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector'].filter(function(sel) {return sel in document.documentElement})[0];
+miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector'].filter(function(sel) {
+	return sel in document.documentElement;
+})[0];
 
 
 if (typeof $ == 'undefined') {
