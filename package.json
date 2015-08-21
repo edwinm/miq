@@ -15,12 +15,12 @@
     "url": "https://github.com/edwinm/miq.git"
   },
   "devDependencies": {
+    "closure-compiler": "^0.2.6",
     "grunt": "~0.4.1",
     "grunt-closure-compiler": "0.0.21",
     "grunt-contrib-watch": "~0.5.3",
-    "closure-compiler": "^0.2.6",
     "jquery": "^2.1.4",
-    "qunit": "^0.7.6",
+    "qunitjs": "^1.18.0",
     "requirejs": "^2.1.18"
   }
 }
