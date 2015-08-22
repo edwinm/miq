@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.5.0
+ @preserve miq 1.6.0
 
  @copyright Copyright 2015 Edwin Martin
 
@@ -49,14 +49,14 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.5.0"},
+	miq: {value: "1.6.0"},
 
 	first: {get: function() {
 		return this[0];
 	}},
 
 	get: {value: function(i) {
-		return $(this[i||0]);
+		return miq(this[i||0]);
 	}},
 
 	// TODO: add delegate mechanism
@@ -264,7 +264,7 @@ miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatc
 
 // Support MD and CommonJS module loading
 if (typeof define === "function" && define.amd) {
-	define('miq', function() {
+	define(function() {
 		return miq;
 	});
 } else if (typeof module === "object" && module.exports) {
