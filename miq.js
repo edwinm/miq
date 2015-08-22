@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.4.0
+ @preserve miq 1.5.0
 
  @copyright Copyright 2015 Edwin Martin
 
@@ -49,7 +49,7 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.4.0"},
+	miq: {value: "1.5.0"},
 
 	first: {get: function() {
 		return this[0];
@@ -262,7 +262,16 @@ miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatc
 	return sel in document.documentElement;
 })[0];
 
-
-if (typeof $ == 'undefined') {
+// Support MD and CommonJS module loading
+if (typeof define === "function" && define.amd) {
+	define('miq', function() {
+		return miq;
+	});
+} else if (typeof module === "object" && module.exports) {
+	module.exports = miq;
+} else if (typeof $ == 'undefined') {
 	$ = miq;
 }
+
+// ES6
+// export miq
