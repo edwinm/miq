@@ -207,25 +207,11 @@ miq.fn = Object.create(Array.prototype, {
 	}},
 
 	html: {value: function(value) {
-		if (typeof value == 'undefined') {
-			return this.first.innerHTML;
-		} else {
-			this.forEach(function(el) {
-				el.innerHTML = value;
-			});
-			return this;
-		}
+		return this.prop('innerHTML', value);
 	}},
 
 	text: {value: function(value) {
-		if (typeof value == 'undefined') {
-			return this.first.textContent;
-		} else {
-			this.forEach(function(el) {
-				el.textContent = value;
-			});
-			return this;
-		}
+		return this.prop('textContent', value);
 	}},
 
 	ajaxCallback: {value: function(url, resolve, reject, options) {
