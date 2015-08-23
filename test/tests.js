@@ -77,6 +77,7 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 
 		QUnit.test("data", function (assert) {
 			var el = miq('.miq');
+			assert.ok(el.data('test') == null);
 			el.data('test', {test1: "test1"});
 			assert.ok(el.data('test').test1 == 'test1');
 		});
