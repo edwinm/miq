@@ -11,7 +11,11 @@
 function miq(arg, doc) {
 	// $(function() {...}
 	if (typeof arg == 'function') {
-		document.addEventListener("DOMContentLoaded", arg);
+		if (document.readyState == 'loading') {
+			document.addEventListener("DOMContentLoaded", arg);
+		} else {
+			arg();
+		}
 	} else {
 		var ret = Object.create(miq.fn);
 		var match;
@@ -28,9 +32,10 @@ function miq(arg, doc) {
 				ret.length = 1;
 			}
 
-			// $('<div>')
+			// $()
 		} else if (!arg) {
 			ret.length = 0;
+			// $('<div>')
 		} else if ((match = arg.match(/<(.+)>/))) {
 			ret[0] = (doc || document).createElement(match[1]);
 			ret.length = 1;
@@ -93,7 +98,6 @@ miq.fn = Object.create(Array.prototype, {
 	}},
 
 	prop: {value: function(property, value) {
-		//console.log('this', this);
 		if (typeof value == 'undefined') {
 			return this.first[property];
 		} else {
@@ -123,15 +127,24 @@ miq.fn = Object.create(Array.prototype, {
 	}},
 
 	val: {value: function(value) {
-		// TODO handle select, radio, checkbox
-		if (typeof value == 'undefined') {
-			return this.first.value;
-		} else {
-			this.forEach(function(el) {
-				el.value = value;
-			});
-			return this;
+		var el = this.first;
+		var prop = 'value';
+
+		switch (el.tagName) {
+			case "SELECT":
+				prop = 'selectedIndex';
+				break;
+			case "OPTION":
+				prop = 'selected';
+				break;
+			case "INPUT":
+				if (el.type == 'checkbox' || el.type == 'radio') {
+					prop = 'checked';
+				}
+				break;
 		}
+
+		return this.prop(prop, value);
 	}},
 
 	data: {value: function(property, value) {
