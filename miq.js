@@ -12,7 +12,7 @@ var miq = function(arg, doc) {
 	// $(function() {...}
 	if (typeof arg == 'function') {
 		if (document.readyState == 'loading') {
-			document.addEventListener("DOMContentLoaded", arg);
+			document.addEventListener('DOMContentLoaded', arg);
 		} else {
 			arg();
 		}
@@ -79,20 +79,20 @@ miq.fn = Object.create(Array.prototype, {
 
 	addClass: {value: function(cls) {
 		this.forEach(function(el) {
-			el.className = el.className + " " + cls;
+			el.className = el.className + ' ' + cls;
 		});
 		return this;
 	}},
 
 	removeClass: {value: function(cls) {
 		this.forEach(function(el) {
-			el.className = el.className.replace(cls, "");
+			el.className = el.className.replace(cls, '');
 		});
 		return this;
 	}},
 
 	hasClass: {value: function(cls) {
-		return this.first.className != "" && new RegExp("\\b" + cls + "\\b").test(this.first.className);
+		return this.first.className != '' && new RegExp('\\b' + cls + '\\b').test(this.first.className);
 	}},
 
 	prop: {value: function(property, value) {
@@ -129,13 +129,13 @@ miq.fn = Object.create(Array.prototype, {
 		var prop = 'value';
 
 		switch (el.tagName) {
-			case "SELECT":
+			case 'SELECT':
 				prop = 'selectedIndex';
 				break;
-			case "OPTION":
+			case 'OPTION':
 				prop = 'selected';
 				break;
-			case "INPUT":
+			case 'INPUT':
 				if (el.type == 'checkbox' || el.type == 'radio') {
 					prop = 'checked';
 				}
@@ -213,7 +213,7 @@ miq.fn = Object.create(Array.prototype, {
 	}}
 });
 
-miq.miq = "1.7.0";
+miq.miq = '1.7.0';
 
 miq.ajaxCallback = function(url, resolve, reject, options) {
 	var xmlHttp = new XMLHttpRequest();
@@ -235,7 +235,7 @@ miq.ajaxCallback = function(url, resolve, reject, options) {
 				}
 				resolve(result);
 			} else if (reject) {
-				reject("Ajax error: " + xmlHttp.status);
+				reject('Ajax error: ' + xmlHttp.status);
 			}
 		}
 	};
@@ -262,11 +262,11 @@ miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatc
 })[0];
 
 // Support MD and CommonJS module loading
-if (typeof define === "function" && define.amd) {
+if (typeof define === 'function' && define.amd) {
 	define(function() {
 		return miq;
 	});
-} else if (typeof module === "object" && module.exports) {
+} else if (typeof module === 'object' && module.exports) {
 	module.exports = miq;
 } else if (typeof $ == 'undefined') {
 	$ = miq;
