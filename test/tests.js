@@ -1,4 +1,4 @@
-require(['../node_modules/qunitjs/qunit/qunit.js', '../miq.js', '../node_modules/es6-promise/dist/es6-promise.min.js'], function(QUnit, miq, es6Promise) {
+require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-promise/dist/es6-promise.min'], function(QUnit, miq, es6Promise) {
 
 	es6Promise.polyfill();
 
