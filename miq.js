@@ -225,7 +225,7 @@ miq.ajaxCallback = function(url, resolve, reject, options) {
 		var result;
 		if (xmlHttp.readyState == 4) {
 			if (xmlHttp.status == 200) {
-				switch(options.type) {
+				switch(options.dataType) {
 					case 'xml':
 						result = xmlHttp.responseXML;
 						break;
