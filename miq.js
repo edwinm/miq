@@ -9,7 +9,7 @@
  */
 
 var miq = function(arg, doc) {
-	// $(function() {...}
+	// $(function() {...})
 	if (typeof arg == 'function') {
 		if (document.readyState == 'loading') {
 			document.addEventListener('DOMContentLoaded', arg);
@@ -18,15 +18,17 @@ var miq = function(arg, doc) {
 		}
 	} else {
 		var ret = Object.create(miq.fn);
-		var match;
+		var match, i;
 
-		// $(domObject)
+		// $([domObject])
 		if (typeof arg == 'object') {
 			if (Array.isArray(arg)) {
-				for (var i = 0; i < arg.length; i++) {
+				for (i = 0; i < arg.length; i++) {
 					ret[i] = arg[i];
 				}
 				ret.length = arg.length;
+
+			// $(domObject)
 			} else {
 				ret[0] = arg;
 				ret.length = 1;
@@ -35,6 +37,7 @@ var miq = function(arg, doc) {
 			// $()
 		} else if (!arg) {
 			ret.length = 0;
+
 			// $('<div>')
 		} else if ((match = arg.match(/<(.+)>/))) {
 			ret[0] = (doc || document).createElement(match[1]);
@@ -43,7 +46,7 @@ var miq = function(arg, doc) {
 			// $('div.widget
 		} else {
 			var els = (doc || document).querySelectorAll(arg);
-			for (var i = 0; i < els.length; i++) {
+			for (i = 0; i < els.length; i++) {
 				ret[i] = els[i];
 			}
 			ret.length = els.length;
@@ -58,7 +61,7 @@ miq.fn = Object.create(Array.prototype, {
 		return this[0];
 	}},
 
-	get: {value: function(i) {
+	eq: {value: function(i) {
 		return miq(this[i||0]);
 	}},
 
@@ -170,7 +173,7 @@ miq.fn = Object.create(Array.prototype, {
 		return miq(value, this.first);
 	}},
 
-	remove: {value: function(value) {
+	remove: {value: function() {
 		this.forEach(function(el) {
 			el.parentNode.removeChild(el);
 		});

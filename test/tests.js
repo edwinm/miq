@@ -25,7 +25,7 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			}));
 			miq('.miq').append(ul);
 			assert.ok(miq('ul li').length == 3);
-			assert.ok(miq('ul li').get(2).text() == 'javascript');
+			assert.ok(miq('ul li').eq(2).text() == 'javascript');
 		});
 
 		QUnit.test("html/text", function (assert) {
