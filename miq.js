@@ -152,7 +152,7 @@ miq.fn = Object.create(Array.prototype, {
 			return miq.dataStore[this.first._miqData||0];
 		} else {
 			this.forEach(function(el) {
-				el.first._miqData = miq.dataCounter;
+				el._miqData = miq.dataCounter;
 				miq.dataStore[miq.dataCounter] = value;
 				miq.dataCounter++;
 			});
