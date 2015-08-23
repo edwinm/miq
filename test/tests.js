@@ -59,9 +59,9 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			miq('.miq').append(select);
 			select.val(2);
 			assert.ok(select.val() == 2);
-			miq(select.find('option')[1]).val(true);
+			select.find('option').eq(1).val(true);
 			assert.ok(select.val() == 1);
-			assert.ok(miq(select.find('option')[1]).val() === true);
+			assert.ok(select.find('option').eq(1).val() === true);
 			select.remove();
 
 			input = miq('<input>').attr('type', 'checkbox');
