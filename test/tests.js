@@ -6,7 +6,7 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 		QUnit.start();
 
 		QUnit.test("version", function (assert) {
-			assert.ok(/[0-9]+\.[0-9]+\.[0-9]+/.test(miq().miq));
+			assert.ok(/[0-9]+\.[0-9]+\.[0-9]+/.test(miq.miq));
 		});
 
 		QUnit.test("add/remove/hasClass", function (assert) {
@@ -118,7 +118,7 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 
 		QUnit.test("ajax json", function (assert) {
 			var done = assert.async();
-			miq().ajax('ajax/test.json', {type: 'json'}).then(function (data) {
+			miq.ajax('ajax/test.json', {type: 'json'}).then(function (data) {
 				assert.ok(data.test1[0]['test1.1'] == 'test1.1');
 				done();
 			});
@@ -126,7 +126,7 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 
 		QUnit.test("ajax text", function (assert) {
 			var done = assert.async();
-			miq().ajax('ajax/test.txt', {}).then(function (data) {
+			miq.ajax('ajax/test.txt', {}).then(function (data) {
 				assert.ok(data == 'This is a sample test file.\n');
 				done();
 			});
@@ -134,7 +134,7 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 
 		QUnit.test("ajax xml", function (assert) {
 			var done = assert.async();
-			miq().ajax('ajax/test.xml', {type: 'xml'}).then(function (data) {
+			miq.ajax('ajax/test.xml', {type: 'xml'}).then(function (data) {
 				assert.ok(miq('test test1-1', data).text() == 'test1');
 				done();
 			});

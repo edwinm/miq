@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.6.0
+ @preserve miq 1.7.0
 
  @copyright Copyright 2015 Edwin Martin
 
@@ -8,7 +8,7 @@
  @license MIT
  */
 
-function miq(arg, doc) {
+var miq = function(arg, doc) {
 	// $(function() {...}
 	if (typeof arg == 'function') {
 		if (document.readyState == 'loading') {
@@ -54,8 +54,6 @@ function miq(arg, doc) {
 };
 
 miq.fn = Object.create(Array.prototype, {
-	miq: {value: "1.6.0"},
-
 	first: {get: function() {
 		return this[0];
 	}},
@@ -212,47 +210,49 @@ miq.fn = Object.create(Array.prototype, {
 
 	text: {value: function(value) {
 		return this.prop('textContent', value);
-	}},
-
-	ajaxCallback: {value: function(url, resolve, reject, options) {
-	    var xmlHttp = new XMLHttpRequest();
-
-		xmlHttp.onreadystatechange = function () {
-			var result;
-			if (xmlHttp.readyState == 4) {
-				if (xmlHttp.status == 200) {
-					switch(options.type) {
-						case 'xml':
-							result = xmlHttp.responseXML;
-							break;
-						case 'json':
-							result = JSON.parse(xmlHttp.responseText);
-							break;
-						default:
-							result = xmlHttp.responseText;
-							break;
-					}
-					resolve(result);
-				} else if (reject) {
-					reject("Ajax error: " + xmlHttp.status);
-				}
-			}
-		};
-		xmlHttp.open(options.method || 'GET', url, true);
-		if (options.headers) {
-			for (var key in options.headers) {
-				xmlHttp.setRequestHeader(key, options.headers[key]);
-			}
-		}
-		xmlHttp.send(options.data || '');
-	}},
-
-	ajax: {value: function(url, options) {
-		return new Promise(function(resolve, reject) {
-			miq().ajaxCallback(url, resolve, reject, options);
-		});
 	}}
 });
+
+miq.miq = "1.7.0";
+
+miq.ajaxCallback = function(url, resolve, reject, options) {
+	var xmlHttp = new XMLHttpRequest();
+
+	xmlHttp.onreadystatechange = function () {
+		var result;
+		if (xmlHttp.readyState == 4) {
+			if (xmlHttp.status == 200) {
+				switch(options.type) {
+					case 'xml':
+						result = xmlHttp.responseXML;
+						break;
+					case 'json':
+						result = JSON.parse(xmlHttp.responseText);
+						break;
+					default:
+						result = xmlHttp.responseText;
+						break;
+				}
+				resolve(result);
+			} else if (reject) {
+				reject("Ajax error: " + xmlHttp.status);
+			}
+		}
+	};
+	xmlHttp.open(options.method || 'GET', url, true);
+	if (options.headers) {
+		for (var key in options.headers) {
+			xmlHttp.setRequestHeader(key, options.headers[key]);
+		}
+	}
+	xmlHttp.send(options.data || '');
+};
+
+miq.ajax = function(url, options) {
+	return new Promise(function (resolve, reject) {
+		miq.ajaxCallback(url, resolve, reject, options);
+	});
+};
 
 miq.dataStore = [null];
 miq.dataCounter = 1;
