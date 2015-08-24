@@ -154,5 +154,12 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 				done();
 			});
 		});
+
+		QUnit.test("plugin", function (assert) {
+			miq.fn.rect = function() {
+				return this.first.getBoundingClientRect();
+			};
+			assert.ok('top' in miq('.miq').rect());
+		});
 	});
 });
