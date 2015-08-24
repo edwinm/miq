@@ -36,7 +36,8 @@ var miq = function(arg, doc) {
 
 			// $()
 		} else if (!arg) {
-			ret.length = 0;
+			ret[0] = new DocumentFragment();
+			ret.length = 1;
 
 			// $('<div>')
 		} else if ((match = arg.match(/<(.+)>/))) {
@@ -166,6 +167,11 @@ miq.fn = Object.create(Array.prototype, {
 		miq(value).forEach(function(el) {
 			t.first.appendChild(el.first);
 		});
+		return this;
+	}},
+
+	before: {value: function(value) {
+		this.first.parentElement.insertBefore(miq().append(value).first, this.first);
 		return this;
 	}},
 

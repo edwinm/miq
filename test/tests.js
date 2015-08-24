@@ -9,6 +9,14 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			assert.ok(/[0-9]+\.[0-9]+\.[0-9]+/.test(miq.miq));
 		});
 
+		QUnit.test("fragment", function (assert) {
+			var fragment = miq();
+			fragment.append(miq('<div>').addClass('child'));
+			miq('.miq').append(fragment);
+			assert.ok(miq(miq('.miq').first.lastChild).hasClass('child'));
+			miq('.child').remove();
+		});
+
 		QUnit.test("add/remove/hasClass", function (assert) {
 			var newDiv = miq('<div>');
 			newDiv.addClass('test1');
@@ -88,12 +96,18 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			assert.ok(p.css('color') == 'red');
 		});
 
-		QUnit.test("remove", function (assert) {
+		QUnit.test("append/remove", function (assert) {
 			var div = miq('<div>');
 			miq('.miq').append(div);
 			assert.ok(miq('.miq div').length == 1);
 			div.remove();
 			assert.ok(miq('.miq div').length == 0);
+		});
+
+		QUnit.test("before", function (assert) {
+			miq('.miq').before(miq('<div>').addClass('before').text('Before'));
+			assert.ok(miq(miq('.before').first.nextSibling).hasClass('miq'));
+			miq('.before').remove();
 		});
 
 		QUnit.test("closest", function (assert) {
