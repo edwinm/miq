@@ -83,11 +83,13 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			assert.ok(input.val() === true);
 		});
 
-		QUnit.test("data", function (assert) {
+		QUnit.test("data/removeData", function (assert) {
 			var el = miq('.miq');
 			assert.ok(el.data('test') == null);
 			el.data('test', {test1: "test1"});
 			assert.ok(el.data('test').test1 == 'test1');
+			el.removeData('test');
+			assert.ok(el.data('test') == null);
 		});
 
 		QUnit.test("css", function (assert) {
@@ -108,6 +110,19 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			miq('.miq').before(miq('<div>').addClass('before').text('Before'));
 			assert.ok(miq(miq('.before').first.nextSibling).hasClass('miq'));
 			miq('.before').remove();
+		});
+
+		QUnit.test("parent", function (assert) {
+			assert.ok(miq('.miq p').parent().prop('tagName') == 'SECTION');
+		});
+
+		QUnit.test("clone", function (assert) {
+			var section = miq('.miq section');
+			miq('.miq').append(section.clone());
+			miq('.miq').append(section.clone());
+			assert.ok(miq('.miq p').length == 3);
+			miq('.miq section').eq(2).remove();
+			miq('.miq section').eq(1).remove();
 		});
 
 		QUnit.test("closest", function (assert) {

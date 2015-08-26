@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.7.0
+ @preserve miq 1.8.0
 
  @copyright Copyright 2015 Edwin Martin
 
@@ -44,7 +44,7 @@ var miq = function(arg, doc) {
 			ret[0] = (doc || document).createElement(match[1]);
 			ret.length = 1;
 
-			// $('div.widget
+			// $('div.widget')
 		} else {
 			var els = (doc || document).querySelectorAll(arg);
 			for (i = 0; i < els.length; i++) {
@@ -66,7 +66,6 @@ miq.fn = Object.create(Array.prototype, {
 		return miq(this[i||0]);
 	}},
 
-	// TODO: add delegate mechanism
 	on: {value: function(evt, fn) {
 		this.forEach(function(el) {
 			el.addEventListener(evt, fn);
@@ -162,6 +161,13 @@ miq.fn = Object.create(Array.prototype, {
 		}
 	}},
 
+	removeData: {value: function(property) {
+		this.forEach(function(el) {
+			delete miq.dataStore[el._miqData];
+			delete el._miqData;
+		});
+	}},
+
 	append: {value: function(value) {
 		var t = this;
 		miq(value).forEach(function(el) {
@@ -175,8 +181,12 @@ miq.fn = Object.create(Array.prototype, {
 		return this;
 	}},
 
-	find: {value: function(value) {
-		return miq(value, this.first);
+	parent: {value: function() {
+		return miq(this.first.parentNode);
+	}},
+
+	clone: {value: function() {
+		return miq(this.first.cloneNode(true));
 	}},
 
 	remove: {value: function() {
@@ -184,6 +194,10 @@ miq.fn = Object.create(Array.prototype, {
 			el.parentNode.removeChild(el);
 		});
 		return this;
+	}},
+
+	find: {value: function(value) {
+		return miq(value, this.first);
 	}},
 
 	closest: {value: function(selector) {
@@ -222,7 +236,7 @@ miq.fn = Object.create(Array.prototype, {
 	}}
 });
 
-miq.miq = '1.7.0';
+miq.miq = '1.8.0';
 
 miq.ajaxCallback = function(url, resolve, reject, options) {
 	var xmlHttp = new XMLHttpRequest();
