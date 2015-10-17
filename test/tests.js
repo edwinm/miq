@@ -1,6 +1,4 @@
-require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-promise/dist/es6-promise.min'], function(QUnit, miq, es6Promise) {
-
-	es6Promise.polyfill();
+require(['../node_modules/qunitjs/qunit/qunit', '../miq-min', '../node_modules/native-promise-only/lib/npo.src'], function(QUnit, miq, npo) {
 
 	miq(function() {
 		QUnit.start();
@@ -83,15 +81,6 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			assert.ok(input.val() === true);
 		});
 
-		QUnit.test("data/removeData", function (assert) {
-			var el = miq('.miq');
-			assert.ok(el.data('test') == null);
-			el.data('test', {test1: "test1"});
-			assert.ok(el.data('test').test1 == 'test1');
-			el.removeData('test');
-			assert.ok(el.data('test') == null);
-		});
-
 		QUnit.test("css", function (assert) {
 			var p = miq('.miq p:first-child');
 			p.css('color', 'red');
@@ -130,9 +119,9 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/es6-p
 			assert.ok(p.closest('div').hasClass('miq'));
 		});
 
-		QUnit.test("matches", function (assert) {
+		QUnit.test("is (matches)", function (assert) {
 			miq('section p:first-child').addClass('first');
-			var first = miq('section p').matches('.first');
+			var first = miq('section p').is('.first');
 			assert.ok(first.length == 1);
 			assert.ok(first.hasClass('first'));
 		});

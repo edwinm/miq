@@ -1,6 +1,6 @@
 /**!
  * Copyright 2015 Edwin Martin
- @preserve miq 1.8.1
+ @preserve miq 1.9.0
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
  */
@@ -146,26 +146,6 @@
 			return this.prop(prop, value);
 		}},
 
-		data: {value: function(property, value) {
-			if (typeof value == 'undefined') {
-				return miq.dataStore[this.first._miqData||0];
-			} else {
-				this.forEach(function(el) {
-					el._miqData = miq.dataCounter;
-					miq.dataStore[miq.dataCounter] = value;
-					miq.dataCounter++;
-				});
-				return this;
-			}
-		}},
-
-		removeData: {value: function(property) {
-			this.forEach(function(el) {
-				delete miq.dataStore[el._miqData];
-				delete el._miqData;
-			});
-		}},
-
 		append: {value: function(value) {
 			var t = this;
 			miq(value).forEach(function(el) {
@@ -208,7 +188,7 @@
 			return null;
 		}},
 
-		matches: {value: function(selector) {
+		is: {value: function(selector) {
 			return miq(this.filter(function(el) {
 				return el[miq.matches](selector);
 			}));
@@ -274,9 +254,6 @@
 			miq.ajaxCallback(url, resolve, reject, options);
 		});
 	};
-
-	miq.dataStore = [null];
-	miq.dataCounter = 1;
 
 	miq.matches = ['matches', 'webkitMatchesSelector', 'mozMatchesSelector', 'msMatchesSelector'].filter(function(sel) {
 		return sel in document.documentElement;
