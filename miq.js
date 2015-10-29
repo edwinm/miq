@@ -1,6 +1,6 @@
 /**!
  * Copyright 2015 Edwin Martin
- @preserve miq 1.9.0
+ @preserve miq 1.10.0
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
  */
@@ -65,30 +65,30 @@
 		}},
 
 		on: {value: function(evt, fn) {
-			this.forEach(function(el) {
-				el.addEventListener(evt, fn);
-			});
+            for (var i = this.length - 1; i >= 0; i--) {
+                this[i].addEventListener(evt, fn);
+            }
 			return this;
 		}},
 
 		off: {value: function(evt, fn) {
-			this.forEach(function(el) {
-				el.removeEventListener(evt, fn);
-			});
+            for (var i = this.length - 1; i >= 0; i--) {
+                this[i].removeEventListener(evt, fn);
+            }
 			return this;
 		}},
 
 		addClass: {value: function(cls) {
-			this.forEach(function(el) {
-				el.className = el.className + ' ' + cls;
-			});
+            for (var i = this.length - 1; i >= 0; i--) {
+                this[i].className += ' ' + cls;
+            }
 			return this;
 		}},
 
 		removeClass: {value: function(cls) {
-			this.forEach(function(el) {
-				el.className = el.className.replace(cls, '');
-			});
+            for (var i = this.length - 1; i >= 0; i--) {
+                this[i].className = this[i].className.replace(cls, '');
+            }
 			return this;
 		}},
 
@@ -100,9 +100,9 @@
 			if (typeof value == 'undefined') {
 				return this.first[property];
 			} else {
-				this.forEach(function(el) {
-					el[property] = value;
-				});
+                for (var i = this.length - 1; i >= 0; i--) {
+                    this[i][property] = value;
+				}
 				return this;
 			}
 		}},
@@ -111,17 +111,17 @@
 			if (typeof value == 'undefined') {
 				return this.first.getAttribute(property);
 			} else {
-				this.forEach(function(el) {
-					el.setAttribute(property, value);
-				});
+                for (var i = this.length - 1; i >= 0; i--) {
+                    this[i].setAttribute(property, value);
+				}
 				return this;
 			}
 		}},
 
 		removeAttr: {value: function(property) {
-			this.forEach(function(el) {
-				el.removeAttribute(property);
-			});
+            for (var i = this.length - 1; i >= 0; i--) {
+                this[i].removeAttribute(property);
+			}
 			return this;
 		}},
 
@@ -147,10 +147,10 @@
 		}},
 
 		append: {value: function(value) {
-			var t = this;
-			miq(value).forEach(function(el) {
-				t.first.appendChild(el.first);
-			});
+			var t = this, v = miq(value), len = v.length;
+            for (var i = 0; i < len; i++) {
+                t.first.appendChild(v[i].first);
+            }
 			return this;
 		}},
 
@@ -168,9 +168,9 @@
 		}},
 
 		remove: {value: function() {
-			this.forEach(function(el) {
-				el.parentNode.removeChild(el);
-			});
+            for (var i = this.length - 1; i >= 0; i--) {
+				this[i].parentNode.removeChild(this[i]);
+			}
 			return this;
 		}},
 
@@ -198,9 +198,9 @@
 			if (typeof value == 'undefined') {
 				return this.first.style[property];
 			} else {
-				this.forEach(function(el) {
-					el.style[property] = value;
-				});
+                for (var i = this.length - 1; i >= 0; i--) {
+					this[i].style[property] = value;
+				}
 				return this;
 			}
 		}},
@@ -214,7 +214,7 @@
 		}}
 	});
 
-	miq.miq = '1.8.1';
+	miq.miq = '1.10.0';
 
 	miq.ajaxCallback = function(url, resolve, reject, options) {
 		var xmlHttp = new XMLHttpRequest();

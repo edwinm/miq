@@ -1,4 +1,4 @@
-require(['../node_modules/qunitjs/qunit/qunit', '../miq-min', '../node_modules/native-promise-only/lib/npo.src'], function(QUnit, miq, npo) {
+require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/native-promise-only/lib/npo.src'], function(QUnit, miq, npo) {
 
 	miq(function() {
 		QUnit.start();
