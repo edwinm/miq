@@ -1,10 +1,13 @@
 /**!
- * Copyright 2015 Edwin Martin
- @preserve miq 1.10.0
+ @preserve miq 1.10.1
+ @copyright 2016 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
  */
 
+/**
+ * Miq, the micro jQuery library
+ */
 (function () {
 	var miq = function(arg, doc) {
 		// $(function() {...})
@@ -21,10 +24,11 @@
 			// $([domObject])
 			if (typeof arg == 'object') {
 				if (Array.isArray(arg)) {
+					ret.length = arg.length;
+
 					for (i = 0; i < arg.length; i++) {
 						ret[i] = arg[i];
 					}
-					ret.length = arg.length;
 
 					// $(domObject)
 				} else {
@@ -45,10 +49,10 @@
 				// $('div.widget')
 			} else {
 				var els = (doc || document).querySelectorAll(arg);
+				ret.length = els.length;
 				for (i = 0; i < els.length; i++) {
 					ret[i] = els[i];
 				}
-				ret.length = els.length;
 			}
 
 			return ret;
@@ -65,28 +69,28 @@
 		}},
 
 		on: {value: function(evt, fn) {
-            for (var i = this.length - 1; i >= 0; i--) {
+            for (var i = 0; i < this.length; i++) {
                 this[i].addEventListener(evt, fn);
             }
 			return this;
 		}},
 
 		off: {value: function(evt, fn) {
-            for (var i = this.length - 1; i >= 0; i--) {
+			for (var i = 0; i < this.length; i++) {
                 this[i].removeEventListener(evt, fn);
             }
 			return this;
 		}},
 
 		addClass: {value: function(cls) {
-            for (var i = this.length - 1; i >= 0; i--) {
+			for (var i = 0; i < this.length; i++) {
                 this[i].className += ' ' + cls;
             }
 			return this;
 		}},
 
 		removeClass: {value: function(cls) {
-            for (var i = this.length - 1; i >= 0; i--) {
+			for (var i = 0; i < this.length; i++) {
                 this[i].className = this[i].className.replace(cls, '');
             }
 			return this;
@@ -100,7 +104,7 @@
 			if (typeof value == 'undefined') {
 				return this.first[property];
 			} else {
-                for (var i = this.length - 1; i >= 0; i--) {
+				for (var i = 0; i < this.length; i++) {
                     this[i][property] = value;
 				}
 				return this;
@@ -111,7 +115,7 @@
 			if (typeof value == 'undefined') {
 				return this.first.getAttribute(property);
 			} else {
-                for (var i = this.length - 1; i >= 0; i--) {
+				for (var i = 0; i < this.length; i++) {
                     this[i].setAttribute(property, value);
 				}
 				return this;
@@ -119,7 +123,7 @@
 		}},
 
 		removeAttr: {value: function(property) {
-            for (var i = this.length - 1; i >= 0; i--) {
+			for (var i = 0; i < this.length; i++) {
                 this[i].removeAttribute(property);
 			}
 			return this;
@@ -168,7 +172,7 @@
 		}},
 
 		remove: {value: function() {
-            for (var i = this.length - 1; i >= 0; i--) {
+			for (var i = 0; i < this.length; i++) {
 				this[i].parentNode.removeChild(this[i]);
 			}
 			return this;
@@ -198,7 +202,7 @@
 			if (typeof value == 'undefined') {
 				return this.first.style[property];
 			} else {
-                for (var i = this.length - 1; i >= 0; i--) {
+				for (var i = 0; i < this.length; i++) {
 					this[i].style[property] = value;
 				}
 				return this;
@@ -270,7 +274,3 @@
 		$ = miq;
 	}
 })();
-
-
-// ES6
-// export miq
