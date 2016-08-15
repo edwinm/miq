@@ -1,6 +1,6 @@
 {
   "name": "miq",
-  "version": "1.10.0",
+  "version": "1.10.2",
   "description": "Lightweight jQuery-like DOM library.",
   "keywords": [
     "jQuery",

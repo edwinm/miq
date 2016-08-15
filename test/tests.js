@@ -9,10 +9,12 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/nativ
 
 		QUnit.test("fragment", function (assert) {
 			var fragment = miq();
-			fragment.append(miq('<div>').addClass('child'));
+			fragment.append(miq('<div>').addClass('child1'));
 			miq('.miq').append(fragment);
-			assert.ok(miq(miq('.miq').first.lastChild).hasClass('child'));
-			miq('.child').remove();
+			assert.ok(miq(miq('.miq').first.lastChild).hasClass('child1'));
+            miq('.miq').append(miq('<div>').addClass('child2').first);
+            assert.ok(miq(miq('.miq').first.lastChild).hasClass('child2'));
+			miq('.child1, .child2').remove();
 		});
 
 		QUnit.test("add/remove/hasClass", function (assert) {

@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.10.1
+ @preserve miq 1.10.2
  @copyright 2016 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
@@ -30,7 +30,7 @@
 						ret[i] = arg[i];
 					}
 
-					// $(domObject)
+                // $(domObject)
 				} else {
 					ret[0] = arg;
 					ret.length = 1;
@@ -53,7 +53,7 @@
 				for (i = 0; i < els.length; i++) {
 					ret[i] = els[i];
 				}
-			}
+            }
 
 			return ret;
 		}
@@ -153,7 +153,7 @@
 		append: {value: function(value) {
 			var t = this, v = miq(value), len = v.length;
             for (var i = 0; i < len; i++) {
-                t.first.appendChild(v[i].first);
+                t.first.appendChild(v[i].first||v[i]);
             }
 			return this;
 		}},
