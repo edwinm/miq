@@ -7,7 +7,16 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/nativ
 			assert.ok(/[0-9]+\.[0-9]+\.[0-9]+/.test(miq.miq));
 		});
 
-		QUnit.test("fragment", function (assert) {
+        QUnit.test("initialise", function (assert) {
+            var domElement = document.createElement('div');
+            domElement.className = 'test1';
+            var miqElement = miq(domElement);
+            assert.ok(miqElement.hasClass('test1'));
+            var miqElement2 = miq(miqElement);
+            assert.ok(miqElement2.hasClass('test1'));
+        });
+
+        QUnit.test("fragment", function (assert) {
 			var fragment = miq();
 			fragment.append(miq('<div>').addClass('child1'));
 			miq('.miq').append(fragment);
