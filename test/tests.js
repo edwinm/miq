@@ -16,6 +16,13 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/nativ
             assert.ok(miqElement2.hasClass('test1'));
         });
 
+        QUnit.test("second argument", function (assert) {
+            miq('body').append(miq('<section>'));
+            assert.equal(miq('section').length, 2);
+            assert.equal(miq('section', document.querySelector('.miq')).length, 1);
+            assert.equal(miq('section', miq('.miq')).length, 1);
+        });
+
         QUnit.test("fragment", function (assert) {
 			var fragment = miq();
 			fragment.append(miq('<div>').addClass('child1'));

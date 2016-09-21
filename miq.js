@@ -10,10 +10,12 @@
  */
 (function () {
     var miq = function(arg, doc) {
+        doc = doc && doc.first || doc || document;
+
         // $(function() {...})
         if (typeof arg == 'function') {
-            if (document.readyState == 'loading') {
-                document.addEventListener('DOMContentLoaded', arg);
+            if (doc.readyState == 'loading') {
+                doc.addEventListener('DOMContentLoaded', arg);
             } else {
                 arg();
             }
@@ -39,17 +41,17 @@
 
                 // $()
             } else if (!arg) {
-                ret[0] = document.createDocumentFragment();
+                ret[0] = doc.createDocumentFragment();
                 ret.length = 1;
 
                 // $('<div>')
             } else if ((match = arg.match(/<(.+)>/))) {
-                ret[0] = (doc || document).createElement(match[1]);
+                ret[0] = doc.createElement(match[1]);
                 ret.length = 1;
 
                 // $('div.widget')
             } else {
-                var els = (doc || document).querySelectorAll(arg);
+                var els = doc.querySelectorAll(arg);
                 ret.length = els.length;
                 for (i = 0; i < els.length; i++) {
                     ret[i] = els[i];
