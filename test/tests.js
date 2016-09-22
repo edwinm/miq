@@ -39,6 +39,9 @@ require(['../node_modules/qunitjs/qunit/qunit', '../miq', '../node_modules/nativ
 			assert.ok(newDiv.hasClass('test1'));
 			newDiv.removeClass('test1');
 			assert.ok(!newDiv.hasClass('test1'));
+            newDiv.addClass('test1');
+            newDiv.addClass('test1');
+            assert.equal(newDiv.first.className.trim(), 'test1');
 		});
 
 		QUnit.test("build html", function (assert) {

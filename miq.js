@@ -87,7 +87,9 @@
 
         addClass: {value: function(cls) {
             for (var i = 0; i < this.length; i++) {
-                this[i].className += ' ' + cls;
+                if(!miq.fn.hasClass.call({first: this[i]}, cls)) {
+                    this[i].className += ' ' + cls;
+                }
             }
             return this;
         }},
