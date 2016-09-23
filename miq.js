@@ -1,5 +1,5 @@
 /**!
- @preserve miq 1.11.0
+ @preserve miq 1.11.1
  @copyright 2016 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
@@ -20,20 +20,17 @@
                 arg();
             }
         } else {
-            var ret = Object.create(miq.fn);
-            var match, i;
+            var ret = Object.create(miq.fn), match;
 
             // $([domObject]) or $(miqObject)
             if (typeof arg == 'object') {
                 if ('length' in arg) {
-
                     ret.length = arg.length;
-
-                    for (i = 0; i < arg.length; i++) {
+                    for (var i = 0; i < arg.length; i++) {
                         ret[i] = arg[i];
                     }
 
-                    // $(domObject)
+                // $(domObject)
                 } else {
                     ret[0] = arg;
                     ret.length = 1;
@@ -51,11 +48,7 @@
 
                 // $('div.widget')
             } else {
-                var els = doc.querySelectorAll(arg);
-                ret.length = els.length;
-                for (i = 0; i < els.length; i++) {
-                    ret[i] = els[i];
-                }
+                ret = miq(doc.querySelectorAll(arg));
             }
 
             return ret;
