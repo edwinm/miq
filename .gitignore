@@ -4,3 +4,4 @@ mclass-min.js.report.txt
 node_modules
 closure-compiler
 miq-min.js.report.txt
+/atlassian-ide-plugin.xml
