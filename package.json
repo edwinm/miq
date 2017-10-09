@@ -18,11 +18,11 @@
     },
     "devDependencies": {
         "closure-compiler": "^0.2.12",
-        "grunt": "~0.4.1",
+        "grunt": "^1.0.1",
         "grunt-closure-compiler": "0.0.21",
         "grunt-contrib-watch": "~0.5.3",
         "native-promise-only": "^0.8.1",
-        "qunitjs": "^1.23.1",
+        "qunitjs": "^2.4.0",
         "requirejs": "^2.3.5"
     }
 }
