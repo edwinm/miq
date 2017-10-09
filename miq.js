@@ -1,12 +1,13 @@
+/// <reference path="miq.d.ts" />
 /**!
- @preserve miq 1.11.1
+ @preserve miq 1.12.0
  @copyright 2016 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
  */
 
 /**
- * Miq, the micro jQuery library
+ * Miq, the micro DOM library
  */
 (function () {
     var miq = function(arg, doc) {
@@ -217,7 +218,7 @@
         }}
     });
 
-    miq.miq = '1.10.0';
+    miq.miq = '1.12.0';
 
     miq.ajaxCallback = function(url, resolve, reject, options) {
         var xmlHttp = new XMLHttpRequest();

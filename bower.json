@@ -1,7 +1,7 @@
 {
     "name": "miq",
     "description": "Lightweight jQuery-like DOM library.",
-    "version": "1.11.0",
+    "version": "1.12.0",
     "main": "./miq-min.js",
     "ignore": [],
     "keywords": ["jQuery", "DOM"],

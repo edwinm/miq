@@ -1,26 +1,28 @@
 {
-  "name": "miq",
-  "version": "1.11.0",
-  "description": "Lightweight jQuery-like DOM library.",
-  "keywords": [
-    "jQuery",
-    "DOM"
-  ],
-  "bugs": "https://github.com/edwinm/miq/issues",
-  "license": "MIT",
-  "author": "Edwin Martin <edwin@bitstorm.org>",
-  "homepage": "http://www.bitstorm.org/javascript/miq/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/edwinm/miq.git"
-  },
-  "devDependencies": {
-    "closure-compiler": "^0.2.6",
-    "grunt": "~0.4.1",
-    "grunt-closure-compiler": "0.0.21",
-    "grunt-contrib-watch": "~0.5.3",
-    "native-promise-only": "^0.8.1",
-    "qunitjs": "^1.18.0",
-    "requirejs": "^2.1.18"
-  }
+    "name": "miq",
+    "version": "1.12.0",
+    "description": "Lightweight DOM library.",
+    "main": "miq.js",
+    "types": "miq.d.ts",
+    "keywords": [
+        "jQuery",
+        "DOM"
+    ],
+    "bugs": "https://github.com/edwinm/miq/issues",
+    "license": "MIT",
+    "author": "Edwin Martin <edwin@bitstorm.org>",
+    "homepage": "http://www.bitstorm.org/javascript/miq/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/edwinm/miq.git"
+    },
+    "devDependencies": {
+        "closure-compiler": "^0.2.12",
+        "grunt": "~0.4.1",
+        "grunt-closure-compiler": "0.0.21",
+        "grunt-contrib-watch": "~0.5.3",
+        "native-promise-only": "^0.8.1",
+        "qunitjs": "^1.23.1",
+        "requirejs": "^2.3.5"
+    }
 }
