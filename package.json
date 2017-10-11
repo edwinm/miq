@@ -17,10 +17,9 @@
         "url": "https://github.com/edwinm/miq.git"
     },
     "devDependencies": {
-        "closure-compiler": "^0.2.12",
-        "grunt": "^1.0.1",
-        "grunt-closure-compiler": "0.0.21",
-        "grunt-contrib-watch": "~0.5.3",
+        "google-closure-compiler-js": "^20170910.0.1",
+        "gulp": "^3.9.1",
+        "gulp-zopfli": "^1.0.0",
         "native-promise-only": "^0.8.1",
         "qunitjs": "^2.4.0",
         "requirejs": "^2.3.5"

@@ -10,7 +10,8 @@
  * Miq, the micro DOM library
  */
 (function () {
-    var miq = function(arg, doc) {
+    /** @type {function(...*):*} */
+    self.miq = function(arg, doc) {
         doc = doc && doc.first || doc || document;
 
         // $(function() {...})
