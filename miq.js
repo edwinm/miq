@@ -23,30 +23,25 @@
             }
         } else {
             var ret = Object.create(miq.fn), match;
+            ret.length = 0;
 
             // $([domObject]) or $(miqObject)
             if (typeof arg == 'object') {
                 if ('length' in arg) {
-                    ret.length = arg.length;
-                    for (var i = 0; i < arg.length; i++) {
-                        ret[i] = arg[i];
-                    }
+                    arg.forEach(function(a) {ret.push(a)});
 
                 // $(domObject)
                 } else {
-                    ret[0] = arg;
-                    ret.length = 1;
+                    ret.push(arg);
                 }
 
                 // $()
             } else if (!arg) {
-                ret[0] = doc.createDocumentFragment();
-                ret.length = 1;
+                ret.push(doc.createDocumentFragment());
 
                 // $('<div>')
             } else if ((match = arg.match(/<(.+)>/))) {
-                ret[0] = doc.createElement(match[1]);
-                ret.length = 1;
+                ret.push(doc.createElement(match[1]));
 
                 // $('div.widget')
             } else {
