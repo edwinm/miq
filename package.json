@@ -1,6 +1,6 @@
 {
     "name": "miq",
-    "version": "1.12.0",
+    "version": "1.13.0",
     "description": "Lightweight DOM library.",
     "main": "miq.js",
     "types": "miq.d.ts",
@@ -12,6 +12,9 @@
     "license": "MIT",
     "author": "Edwin Martin <edwin@bitstorm.org>",
     "homepage": "http://www.bitstorm.org/javascript/miq/",
+    "scripts": {
+        "build": "gulp"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/edwinm/miq.git"
@@ -21,7 +24,7 @@
         "gulp": "^3.9.1",
         "gulp-zopfli": "^1.0.0",
         "native-promise-only": "^0.8.1",
-        "qunitjs": "^2.4.0",
+        "qunitjs": "^2.4.1",
         "requirejs": "^2.3.5"
     }
 }
