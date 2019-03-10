@@ -1,7 +1,7 @@
 /// <reference path="miq.d.ts" />
 /**!
- @preserve miq 1.13.1
- @copyright 2018 Edwin Martin
+ @preserve miq 1.14.0
+ @copyright 2019 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
  */
@@ -266,7 +266,7 @@
         });
     } else if (typeof module === 'object' && module.exports) {
         module.exports = miq;
-    } else if (typeof $ == 'undefined') {
-        $ = miq;
+    } else if (typeof self.$ == 'undefined') {
+        self.$ = miq;
     }
 })();

@@ -1,6 +1,6 @@
 /*
- miq 1.13.1
- @copyright 2018 Edwin Martin
+ miq 1.14.0
+ @copyright 2019 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
 */
@@ -11,4 +11,4 @@ miq.fn=Object.create(Array.prototype,{first:{get:function(){return this[0]}},eq:
 return this}},parent:{value:function(){return miq(this.first.parentNode)}},clone:{value:function(){return miq(this.first.cloneNode(!0))}},remove:{value:function(){for(var a=0;a<this.length;a++)this[a].parentNode.removeChild(this[a]);return this}},find:{value:function(a){return miq(a,this.first)}},closest:{value:function(a){var b=this.first;do if(b[miq.matches](a))return miq(b);while(b=b.parentElement);return null}},is:{value:function(a){return miq(this.filter(function(b){return b[miq.matches](a)}))}},
 css:{value:function(a,b){if("undefined"==typeof b)return this.first.style[a];for(var c=0;c<this.length;c++)this[c].style[a]=b;return this}},html:{value:function(a){return this.prop("innerHTML",a)}},text:{value:function(a){return this.prop("textContent",a)}}});miq.miq="1.13.0";
 miq.ajaxCallback=function(a,b,c,d){var e=new XMLHttpRequest;e.onreadystatechange=function(){if(4==e.readyState)if(200==e.status){switch(d.dataType){case "xml":var a=e.responseXML;break;case "json":a=JSON.parse(e.responseText);break;default:a=e.responseText}b(a)}else c&&c("Ajax error: "+e.status)};e.open(d.method||"GET",a,!0);if(d.headers)for(var f in d.headers)e.setRequestHeader(f,d.headers[f]);e.send(d.data||"")};miq.ajax=function(a,b){return new Promise(function(c,d){miq.ajaxCallback(a,c,d,b)})};
-miq.matches=["matches","webkitMatchesSelector","mozMatchesSelector","msMatchesSelector"].filter(function(a){return a in document.documentElement})[0];"function"===typeof define&&define.amd?define(function(){return miq}):"object"===typeof module&&module.exports?module.exports=miq:"undefined"==typeof $&&($=miq);
+miq.matches=["matches","webkitMatchesSelector","mozMatchesSelector","msMatchesSelector"].filter(function(a){return a in document.documentElement})[0];"function"===typeof define&&define.amd?define(function(){return miq}):"object"===typeof module&&module.exports?module.exports=miq:"undefined"==typeof self.$&&(self.$=miq);

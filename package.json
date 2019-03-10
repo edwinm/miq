@@ -1,6 +1,6 @@
 {
     "name": "miq",
-    "version": "1.13.1",
+    "version": "1.14.0",
     "description": "Lightweight DOM library.",
     "main": "miq.js",
     "types": "miq.d.ts",
