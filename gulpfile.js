@@ -1,31 +1,29 @@
 const gulp = require('gulp');
 const fs = require('fs');
-const compiler = require('google-closure-compiler-js').gulp();
-const zopfli = require("gulp-zopfli");
+const compiler = require('google-closure-compiler').gulp();
+const zopfli = require("gulp-zopfli-green");
 const externsfile = 'closure-externs.js';
 
-gulp.task('compile', function() {
-  return gulp.src('miq.js', {base: './'})
-      .pipe(compiler({
-          jsOutputFile: 'miq-min.js',
-          languageIn: 'ECMASCRIPT6',
-          languageOut: 'ECMASCRIPT6',
-          compilationLevel: 'ADVANCED',
-          warningLevel: 'QUIET',
-          createSourceMap: true,
-          externs: [{src: fs.readFileSync(externsfile, 'utf-8'), path: externsfile}]
-      }))
-      .pipe(gulp.dest('./'));
+gulp.task('compile', function (done) {
+	return gulp.src('./miq.js', {base: './'})
+		.pipe(compiler({
+			compilation_level: 'ADVANCED',
+			warning_level: 'VERBOSE',
+			language_in: 'ECMASCRIPT6_STRICT',
+			language_out: 'ECMASCRIPT6_STRICT',
+			js_output_file: 'miq-min.js',
+			create_source_map: true,
+			externs: externsfile
+		}))
+		.pipe(gulp.dest('./'));
+	done();
 });
 
-
-gulp.task("compress", function() {
-    gulp.src('miq-min.js')
+gulp.task('compress', function(done) {
+    gulp.src('./miq-min.js')
         .pipe(zopfli())
         .pipe(gulp.dest('./'));
+    done();
 });
 
-gulp.task("default", function() {
-    gulp.run("compile");
-    gulp.run("compress");
-});
+	exports.default = gulp.series('compile', 'compress');

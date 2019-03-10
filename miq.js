@@ -1,6 +1,6 @@
 /// <reference path="miq.d.ts" />
 /**!
- @preserve miq 1.13.0
+ @preserve miq 1.13.1
  @copyright 2018 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT

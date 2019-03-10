@@ -1,6 +1,6 @@
 {
     "name": "miq",
-    "version": "1.13.0",
+    "version": "1.13.1",
     "description": "Lightweight DOM library.",
     "main": "miq.js",
     "types": "miq.d.ts",
@@ -20,11 +20,11 @@
         "url": "https://github.com/edwinm/miq.git"
     },
     "devDependencies": {
-        "google-closure-compiler-js": "^20170910.0.1",
-        "gulp": "^3.9.1",
-        "gulp-zopfli": "^1.0.0",
+        "gulp": "^4.0.0",
+        "google-closure-compiler": "^20190301.0.0",
+        "gulp-zopfli-green": "^3.0.1",
         "native-promise-only": "^0.8.1",
         "qunitjs": "^2.4.1",
-        "requirejs": "^2.3.5"
+        "requirejs": "^2.3.6"
     }
 }
