@@ -1,4 +1,4 @@
-// Type definitions for miq v1.12.0
+// Type definitions for miq v1.13.1
 // Project: https://bitstorm.org/javascript/miq/
 // Definitions by: Edwin Martin <https://bitstorm.org>
 // Definitions:
@@ -67,7 +67,7 @@ interface IMiqStatic {
      * @param url
      * @param options
      */
-    ajax(url: string, options?: IMiqAjaxConfig): Promise;
+    ajax(url: string, options?: IMiqAjaxConfig): Promise<any>;
     /**
      * Fetch the url, like ajax(), but Promise support not required
      * options: {
@@ -92,7 +92,7 @@ interface IMiqStatic {
  * Miq is a lightweight jQuery-like DOM library.
  * See https://bitstorm.org/javascript/miq/
  */
-interface IMiq extends Array {
+interface IMiq extends Array<any> {
     /**
      * Get the first DOM element from the collection
      */
