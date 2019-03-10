@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Miq example</title>
+<script src="../miq-min.js"></script>
+	<script>
+		$(() => {
+			$('#app').append(
+					$("<ul>").append(
+							["Zeus", "Hades", "Poseidon"].map((god) =>
+									$("<li>").append($("<a>").text(god).attr("href", `https://en.wikipedia.org/wiki/${god}`)))
+					)
+			)
+		});
+	</script>
+</head>
+<body>
+
+<h1>Miq example</h1>
+
+<div id="app"></div>
+
+</body>
+</html>
