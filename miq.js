@@ -1,6 +1,6 @@
 /// <reference path="miq.d.ts" />
 /**!
- @preserve miq 1.14.0
+ @preserve miq 1.15.0
  @copyright 2019 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
@@ -214,7 +214,7 @@
         }}
     });
 
-    miq.miq = '1.13.0';
+    miq.miq = '1.15.0';
 
     miq.ajaxCallback = function(url, resolve, reject, options) {
         var xmlHttp = new XMLHttpRequest();

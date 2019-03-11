@@ -1,6 +1,6 @@
 {
     "name": "miq",
-    "version": "1.14.0",
+    "version": "1.15.0",
     "description": "Lightweight DOM library.",
     "main": "miq.js",
     "types": "miq.d.ts",
@@ -15,6 +15,12 @@
     "scripts": {
         "build": "gulp"
     },
+	"files": [
+		"miq.js",
+		"miq-min.js",
+		"miq-min.js.gz",
+		"miq.d.ts"
+	],
     "repository": {
         "type": "git",
         "url": "https://github.com/edwinm/miq.git"

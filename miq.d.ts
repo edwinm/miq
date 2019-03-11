@@ -1,4 +1,4 @@
-// Type definitions for miq v1.13.1
+// Type definitions for miq v1.15.0
 // Project: https://bitstorm.org/javascript/miq/
 // Definitions by: Edwin Martin <https://bitstorm.org>
 // Definitions:
