@@ -1,6 +1,6 @@
 /*
- miq 1.15.0
- @copyright 2019 Edwin Martin
+ miq 1.16.0
+ @copyright 2025 Edwin Martin
  @see {@link http://www.bitstorm.org/javascript/miq/}
  @license MIT
 */
